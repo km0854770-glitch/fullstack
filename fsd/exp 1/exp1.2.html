@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banking Interface</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+}
+.bank{
+    max-width:300px;
+    margin:50px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:6px;
+    text-align:center;
+}
+input, button{
+    width:100%;
+    padding:8px;
+    margin-top:8px;
+}
+button{
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="bank">
+    <h3>Balance: ₹<span id="balance">0</span></h3>
+    <input type="number" id="amount" placeholder="Enter amount" min="1">
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+    <p id="msg"></p>
+</div>
+
+<script>
+let balance = 0;
+
+function deposit(){
+    let amt = Number(amount.value);
+    if(amt > 0){
+        balance += amt;
+        update("Deposit successful");
+    }
+}
+
+function withdraw(){
+    let amt = Number(amount.value);
+    if(amt > 0 && amt <= balance){
+        balance -= amt;
+        update("Withdrawal successful");
+    } else {
+        msg.textContent = "Insufficient balance";
+    }
+}
+
+function update(text){
+    document.getElementById("balance").textContent = balance;
+    msg.textContent = text;
+    amount.value = "";
+}
+</script>
+
+</body>
+</html>
