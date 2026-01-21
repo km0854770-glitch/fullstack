@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+}
+.form-box{
+    width:320px;
+    margin:50px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:6px;
+}
+label{
+    display:block;
+    margin-top:10px;
+}
+input{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+}
+button{
+    margin-top:15px;
+    width:100%;
+    padding:10px;
+    background:#007bff;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.links{
+    margin-top:20px;
+    text-align:center;
+}
+.links a{
+    display:block;
+    margin-top:8px;
+    color:#007bff;
+    text-decoration:none;
+    font-size:14px;
+}
+.links a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h3>Student Registration</h3>
+
+<form>
+<label>Name</label>
+<input type="text" required minlength="3" placeholder="Enter name">
+
+<label>Email</label>
+<input type="email" required placeholder="Enter email">
+
+<label>Age</label>
+<input type="number" required min="5" max="100" placeholder="Enter age">
+
+<button type="submit">Register</button>
+</form>
+
+<div class="links">
+  <a href="https://experimentdot2.netlify.app" target="_blank">
+    Bank Withdrawal Link
+  </a>
+  <a href="https://experimentdot3.netlify.app" target="_blank">
+    Dark Theme Toggle Link
+  </a>
+</div>
+
+</div>
+
+</body>
+</html>
