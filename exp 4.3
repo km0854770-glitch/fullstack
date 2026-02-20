@@ -1,0 +1,91 @@
+const express = require("express");
+const bookingSystem = require("./booking-system");
+
+const app = express();
+
+app.use(express.json());
+
+// Booking API
+app.post("/api/book", bookingSystem.bookSeat);
+
+app.listen(3000, () => {
+    console.log("Ticket Booking System running on port 3000");
+});
+const { createClient } = require("redis");
+
+// Redis client
+const client = createClient();
+
+client.on("error", (err) => {
+    console.log("Redis Error:", err);
+});
+
+client.connect();
+
+let availableSeats = 100;
+
+exports.bookSeat = async (req, res) => {
+
+    // Lock key (prevents race condition)
+    const seatId = "seat-lock";
+
+    try {
+
+        // Try locking seat
+        const lock = await client.set(seatId, "locked", {
+            NX: true, // Only set if key doesn't exist
+            EX: 5     // Auto expire in 5 sec
+        });
+
+        // Lock failed → someone else booking
+        if (!lock) {
+            return res.status(400).json({
+                success: false,
+                message: "Seat is being booked by someone else"
+            });
+        }
+
+        // Check seat availability
+        if (availableSeats <= 0) {
+
+            await client.del(seatId);
+
+            return res.status(400).json({
+                success: false,
+                message: "No seats available"
+            });
+        }
+
+        // Book seat
+        availableSeats--;
+
+        const bookingId = Date.now();
+
+        // Release lock
+        await client.del(seatId);
+
+        return res.status(200).json({
+            success: true,
+            bookingId,
+            remaining: availableSeats
+        });
+
+    } catch (error) {
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
+    config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 10
+      arrivalRate: 20
+
+scenarios:
+  - flow:
+      - post:
+          url: "/api/book"
+};
