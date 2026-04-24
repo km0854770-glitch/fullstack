@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f8fc;
+}
+
+/* Container for all product cards */
+.product-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Single product card */
+.product-card {
+  width: 260px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Image placeholder */
+.product-image {
+  width: 100%;
+  height: 140px;
+  background-color: #e6edf5;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* Product name */
+.product-name {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+/* Price */
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Stock status badge */
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* In stock */
+.in-stock {
+  background-color: #e6f8ec;
+  color: #1f8b4c;
+}
+
+/* Out of stock */
+.out-stock {
+  background-color: #fdeaea;
+  color: #c0392b;
+}
